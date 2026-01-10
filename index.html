@@ -72,4 +72,62 @@ body{
     max-width:720px;
     border-radius:15px;
     line-height:1.6;
-    text-align:ce
+    text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD SCREEN -->
+<div id="lock">
+    <div class="lock-box">
+        <h3>🔒 Enter Password</h3>
+        <input type="password" id="pass" placeholder="Password">
+        <button onclick="unlock()">Unlock</button>
+    </div>
+</div>
+
+<!-- CONTENT -->
+<div id="page">
+    <div class="center">
+        <h1 style="color:#ff4081;">Happy Birthday!</h1>
+
+        <p><strong>Aapko janamdin ki hardik shubkamnaye</strong> 💖  
+        aap meri life ki sabse special dost ho.</p>
+
+        <p>
+        Tum bina bole sab samajh jati ho aur hamesha mere saath rehti ho.
+        </p>
+
+        <p>
+        Haan, hum ladte bhi hain 😉<br>
+        thoda gussa, thoda drama.<br>
+        par end me sab theek ho jaata hai.<br>
+        kyunki dosti humari har ladai se zyada strong hai 🥰<br>
+        Isliye aaj, sirf ladai ya past ki baat nahi.<br>
+        sirf khushi, smiles aur achhi yaadein yaad rakhte hain.
+        </p>
+
+        <p>
+        Mujhe poora bharosa hai ki aap apne goals zaroor achieve karogi 👍
+        </p>
+    </div>
+</div>
+
+<script>
+function unlock(){
+    var correctPassword = "SHOBHA31012005";
+    var userPassword = document.getElementById("pass").value;
+
+    if(userPassword === correctPassword){
+        document.getElementById("lock").style.display = "none";
+        document.getElementById("page").style.display = "block";
+    }else{
+        alert("❌ Galat Password!");
+    }
+}
+</script>
+
+</body>
+</html>
