@@ -9,9 +9,7 @@
 html,body{
     margin:0;
     padding:0;
-    min-height:100vh;
     font-family:Arial;
-    background:black;
 }
 
 /* LOCK SCREEN */
@@ -36,9 +34,7 @@ html,body{
     box-shadow:0 0 30px rgba(255,0,100,0.4);
 }
 
-.lock-box h2{
-    color:#ff4d88;
-}
+.lock-box h2{color:#ff4d88;}
 
 .lock-box input{
     width:90%;
@@ -57,31 +53,34 @@ html,body{
     background:#ff4d88;
     color:white;
     font-size:16px;
-    cursor:pointer;
 }
 
 /* CONTENT */
 #content{
     display:none;
+    position:relative;
+    min-height:100vh;
     background-image:url("mahiru.jpg");
     background-size:cover;
     background-position:center;
-    min-height:100vh;
     overflow-y:auto;
 }
 
+/* overlay FIX */
 #content::before{
     content:"";
-    position:fixed;
+    position:absolute;   /* FIXED → ABSOLUTE */
     inset:0;
     background:rgba(0,0,0,0.45);
-    z-index:-1;
+    z-index:0;
 }
 
 .center{
-    background:rgba(255,255,255,0.85);
+    position:relative;
+    z-index:1;
+    background:rgba(255,255,255,0.88);
     padding:20px;
-    margin:25px auto;
+    margin:25px auto 80px; /* bottom space */
     width:90%;
     max-width:600px;
     border-radius:15px;
@@ -108,11 +107,10 @@ html,body{
 
 <body>
 
-<!-- 🔐 LOCK SCREEN -->
+<!-- LOCK -->
 <div id="lockScreen">
     <div class="lock-box">
         <h2>🔒 Private Page</h2>
-        <p>Enter Password</p>
         <input type="password" id="pwd" placeholder="Password">
         <br>
         <button onclick="unlock()">Unlock 💖</button>
@@ -120,75 +118,62 @@ html,body{
     </div>
 </div>
 
-<!-- 🔒 PROTECTED CONTENT -->
+<!-- CONTENT -->
 <div id="content">
     <div class="center">
         <h1 style="color:#ff4081;">🎂 Happy Birthday 🎂</h1>
-   <p>
-       Haan, hum ladte bhi hain 😉<br>
-       thoda gussa, thoda drama.<br>
-       par end me sab theek ho jaata hai.<br>
-       kyunki dosti humari har ladai se zyada strong hai.🥰<br>
-       Isliye aaj, sirf ladai ya past ki baat nahi.<br>
-       sirf khushi, smiles aur achhi yaadein yaad rakhte hain.<br>
-       Tu jaisi hai, bilkul waise hi special hai😊<br>
-       meed hai aane wala saal aapke liye<br>
-       aur bhi zyada khushiyan lekar aaye.<br>
-      our aage bhi ham aise ladte our dost banke rehenge😁<br>
-    </p>
-    <p>
-     aap jo mehnat padhai mein kar rahi hai,<br>
-     wo kabhi waste nahi jaayegi.<br>
-    Mujhe poora bharosa hai ki<br>
-    aap apne goals zaroor achieve karegi.<br>
-    Bas khud par vishwas rakhna,<br>
-    aur thoda rest lena bhi mat bhoolna.<br>
-    Main hamesha aapko support karne ke liye hoon👍<br>
-    our mai hamesha aapke saath hu<br>
-    agar aapko in future me koi bhi help chahiye ho<br>
-    yo mujhe yaad kar sakte ho 😊 <br>
- </p>
-    
+
+        <p>
+        Haan, hum ladte bhi hain 😉<br>
+        thoda gussa, thoda drama.<br>
+        par end me sab theek ho jaata hai.<br>
+        kyunki dosti humari har ladai se zyada strong hai 🥰<br>
+        Isliye aaj sirf khushi aur achhi yaadein 💖
+        </p>
+
+        <p>
+        Aap jo mehnat padhai mein kar rahi ho,<br>
+        wo kabhi waste nahi jaayegi 📚<br>
+        Mujhe poora bharosa hai aap apne goals achieve karogi ✨
+        </p>
+    </div>
 </div>
 
 <script>
-/* 🔐 SIMPLE & STABLE PASSWORD */
-const PASSWORD = "SHOBHA";
+const PASSWORD="SHOBHA";
 
 function unlock(){
-    const input = document.getElementById("pwd").value.trim();
-
-    if(input === PASSWORD){
+    const input=document.getElementById("pwd").value.trim();
+    if(input===PASSWORD){
         sessionStorage.setItem("unlocked","yes");
-        document.getElementById("lockScreen").style.display="none";
-        document.getElementById("content").style.display="block";
+        lockScreen.style.display="none";
+        content.style.display="block";
         startHearts();
     }else{
-        document.getElementById("error").style.display="block";
+        error.style.display="block";
     }
 }
 
-/* AUTO UNLOCK IF ALREADY VERIFIED */
 if(sessionStorage.getItem("unlocked")==="yes"){
-    document.getElementById("lockScreen").style.display="none";
-    document.getElementById("content").style.display="block";
+    lockScreen.style.display="none";
+    content.style.display="block";
     startHearts();
 }
 
-/* HEART EFFECT */
 function startHearts(){
     setInterval(()=>{
-        const heart=document.createElement("div");
-        heart.className="heart "+(Math.random()>0.5?"pink":"blue");
-        heart.innerHTML=Math.random()>0.5?"💗":"💙";
-        heart.style.left=Math.random()*100+"vw";
-        heart.style.fontSize=(18+Math.random()*20)+"px";
-        heart.style.animationDuration=(4+Math.random()*4)+"s";
-        document.body.appendChild(heart);
-        setTimeout(()=>heart.remove(),8000);
+        const h=document.createElement("div");
+        h.className="heart "+(Math.random()>0.5?"pink":"blue");
+        h.innerHTML=Math.random()>0.5?"💗":"💙";
+        h.style.left=Math.random()*100+"vw";
+        h.style.fontSize=(18+Math.random()*20)+"px";
+        h.style.animationDuration=(4+Math.random()*4)+"s";
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(),8000);
     },300);
 }
 </script>
 
 </body>
 </html>
+
