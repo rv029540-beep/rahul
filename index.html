@@ -8,9 +8,25 @@
 body{
     margin:0;
     font-family:Arial;
-    background:#222;
     color:#fff;
-    overflow-y:auto;        /* ✅ vertical scroll */
+
+    /* ✅ MAHIRU BACKGROUND */
+    background-image:url("mahiru.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+
+    overflow-y:auto;   /* scroll allow */
+}
+
+/* Dark overlay so text readable */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.45);
+    z-index:-1;
 }
 
 /* 🔒 Lock screen */
@@ -52,23 +68,23 @@ body{
     cursor:pointer;
 }
 
-/* 🔓 Page (hidden first) */
+/* 🔓 Page */
 #page{
     display:none;
-    padding:20px 0 40px;   /* bottom space for scroll */
+    padding:30px 0 50px;
 }
 
 /* 📦 Content box */
 .center{
-    background:rgba(255,255,255,0.95);
+    background:rgba(255,255,255,0.92);
     color:#000;
     padding:20px;
     margin:20px auto;
     width:92%;
-    max-width:700px;
+    max-width:720px;
     border-radius:15px;
-    text-align:center;
     line-height:1.6;
+    text-align:center;
 }
 </style>
 </head>
@@ -84,7 +100,7 @@ body{
     </div>
 </div>
 
-<!-- 🎁 FULL CONTENT (SCROLLABLE) -->
+<!-- 🎁 CONTENT -->
 <div id="page">
     <div class="center">
         <h1 style="color:#ff4081;">Happy Birthday!</h1>
@@ -134,7 +150,7 @@ function unlock(){
     if(userPassword === correctPassword){
         document.getElementById("lock").style.display = "none";
         document.getElementById("page").style.display = "block";
-        window.scrollTo(0,0);   // 🔝 top se start
+        window.scrollTo(0,0);
     }else{
         alert("❌ Galat Password!");
     }
