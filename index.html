@@ -28,6 +28,7 @@ body{
     background:rgba(255,255,255,0.75);
     padding:20px;
     margin:auto;
+    margin-top:20vh;
     width:90%;
     max-width:600px;
     border-radius:15px;
@@ -107,32 +108,31 @@ body{
 
 <!-- 🔒 LOCKED CONTENT -->
 <div id="page">
+    <div class="center">
+        <h1 style="color:#ff4081;">Happy Birthday!</h1>
 
-<div class="center">
-    <h1 style="color:#ff4081;">Happy Birthday!</h1>
+        <p><strong>Aapko janamdin ki hardik shubkamnaye</strong> 💖</p>
 
-    <p><strong>Aapko janamdin ki hardik shubkamnaye</strong> 💖</p>
+        <p>
+          Tum bina bole sab samajh jati ho aur hamesha mere saath rehti ho.
+        </p>
 
-    <p>
-      Tum bina bole sab samajh jati ho aur hamesha mere saath rehti ho.
-    </p>
+        <p>
+           Haan, hum ladte bhi hain 😉<br>
+           par end me sab theek ho jaata hai,<br>
+           kyunki dosti humari har ladai se zyada strong hai 🥰
+        </p>
 
-    <p>
-       Haan, hum ladte bhi hain 😉<br>
-       par end me sab theek ho jaata hai,<br>
-       kyunki dosti humari har ladai se zyada strong hai 🥰
-    </p>
-
-    <p>
-     Mujhe poora bharosa hai ki<br>
-     aap apne goals zaroor achieve karogi 👍
-    </p>
-</div>
-
+        <p>
+         Mujhe poora bharosa hai ki<br>
+         aap apne goals zaroor achieve karogi 👍
+        </p>
+    </div>
 </div>
 
 <script>
-var password = "SHOBHA31012005"; // 🔑 SHOBHA31012005
+/* 🔑 PASSWORD */
+var password = "SHOBHA31012005";
 
 function checkPassword(){
     var userPass = document.getElementById("passInput").value;
@@ -140,26 +140,40 @@ function checkPassword(){
     if(userPass === password){
         document.getElementById("lockScreen").style.display = "none";
         document.getElementById("page").style.display = "block";
+        startHearts();   // ❤️ hearts start after unlock
     }else{
         alert("❌ Galat Password!");
     }
 }
 
-/* Hearts */
+/* ❤️ Hearts */
 function createHeart(){
-    const heart=document.createElement("div");
-    heart.className="heart";
+    const heart = document.createElement("div");
+    heart.className = "heart";
 
-    if(Math.random()>0.5){
+    if(Math.random() > 0.5){
         heart.classList.add("pink");
-        heart.innerHTML="💗";
+        heart.innerHTML = "💗";
     }else{
         heart.classList.add("blue");
-        heart.innerHTML="💙";
+        heart.innerHTML = "💙";
     }
 
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.fontSize=(20+Math.random()*20)+"px";
-    heart.style.animatio
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (20 + Math.random() * 20) + "px";
+    heart.style.animationDuration = (4 + Math.random() * 4) + "s";
 
+    document.body.appendChild(heart);
 
+    setTimeout(() => {
+        heart.remove();
+    }, 8000);
+}
+
+function startHearts(){
+    setInterval(createHeart, 200);
+}
+</script>
+
+</body>
+</html>
