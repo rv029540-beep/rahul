@@ -64,14 +64,15 @@ html,body{
     background-size:cover;
     background-position:center;
     overflow-y:auto;
+    filter: brightness(1.25) contrast(1.1); /* 🔥 image bright */
 }
 
-/* overlay FIX */
+/* overlay */
 #content::before{
     content:"";
-    position:absolute;   /* FIXED → ABSOLUTE */
+    position:absolute;
     inset:0;
-    background:rgba(0,0,0,0.45);
+    background:rgba(0,0,0,0.15); /* 🔥 dark kam */
     z-index:0;
 }
 
@@ -80,7 +81,7 @@ html,body{
     z-index:1;
     background:rgba(255,255,255,0.88);
     padding:20px;
-    margin:25px auto 80px; /* bottom space */
+    margin:25px auto 80px;
     width:90%;
     max-width:600px;
     border-radius:15px;
@@ -94,7 +95,9 @@ html,body{
     font-size:22px;
     animation:floatUp linear forwards;
     pointer-events:none;
+    z-index:99999; /* 🔥 text ke upar */
 }
+
 .pink{color:#ff4d6d;}
 .blue{color:#4dabf7;}
 
@@ -121,37 +124,23 @@ html,body{
 <!-- CONTENT -->
 <div id="content">
     <div class="center">
-        <h1 style="color:#ff4081:">
-         🎂 Happy Birthday 🎂</h1>
-     
-   
-    <p><strong>Aapko janamdin ki hardik shubkamnaye</strong> aap meri life ki sabse special dost ho.</p>
+        <h1 style="color:#ff80ab;">
+            🎂 Happy Birthday 🎂
+        </h1>
+
+        <p><strong>Aapko janamdin ki hardik shubkamnaye</strong> aap meri life ki sabse special dost ho.</p>
 
         <p>
-         Haan, hum ladte bhi hain 😉<br>
-       thoda gussa, thoda drama.<br>
-       par end me sab theek ho jaata hai.<br>
-       kyunki dosti humari har ladai se zyada strong hai.🥰<br>
-       Isliye aaj, sirf ladai ya past ki baat nahi.<br>
-       sirf khushi, smiles aur achhi yaadein yaad rakhte hain.<br>
-       Tu jaisi hai, bilkul waise hi special hai😊<br>
-       umeed hai aane wala saal aapke liye<br>
-       aur bhi zyada khushiyan lekar aaye.<br>
-      our aage bhi ham aise ladte our dost banke rehenge😁<br>
+        Haan, hum ladte bhi hain 😉<br>
+        thoda gussa, thoda drama.<br>
+        par end me sab theek ho jaata hai.<br>
+        kyunki dosti humari har ladai se zyada strong hai.🥰<br>
         </p>
 
         <p>
-         aap jo mehnat padhai mein kar rahi hai,<br>
-     wo kabhi waste nahi jaayegi.<br>
-    Mujhe poora bharosa hai ki<br>
-    aap apne goals zaroor achieve karegi.<br>
-    Bas khud par vishwas rakhna,<br>
-    aur thoda rest lena bhi mat bhoolna.<br>
-    Main hamesha aapko support karne ke liye hoon👍<br>
-    our mai hamesha aapke saath hu<br>
-    agar aapko in future me koi bhi help chahiye ho<br>
-    to mujhe yaad kar sakte ho 😊 <br>
-
+        aap jo mehnat padhai mein kar rahi hai,<br>
+        wo kabhi waste nahi jaayegi.<br>
+        Main hamesha aapko support karne ke liye hoon 👍
         </p>
     </div>
 </div>
@@ -177,20 +166,4 @@ if(sessionStorage.getItem("unlocked")==="yes"){
     startHearts();
 }
 
-function startHearts(){
-    setInterval(()=>{
-        const h=document.createElement("div");
-        h.className="heart "+(Math.random()>0.5?"pink":"blue");
-        h.innerHTML=Math.random()>0.5?"💗":"💙";
-        h.style.left=Math.random()*100+"vw";
-        h.style.fontSize=(18+Math.random()*20)+"px";
-        h.style.animationDuration=(4+Math.random()*4)+"s";
-        document.body.appendChild(h);
-        setTimeout(()=>h.remove(),8000);
-    },300);
-}
-</script>
-
-</body>
-</html>
-
+f
