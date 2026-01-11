@@ -215,17 +215,7 @@ if(sessionStorage.getItem("unlocked")==="yes"){
     startHearts();
 }
 
-function startHearts(){
-    setInterval(()=>{
-        const h=document.createElement("div");
-        h.className="heart gradient-heart";
-        h.innerHTML="❤";
-        h.style.left=Math.random()*100+"vw";
-        h.style.fontSize=(18+Math.random()*20)+"px";
-        h.style.animationDuration=(4+Math.random()*4)+"s";
-        content.appendChild(h);   // ✅ overlay ke upar
-        setTimeout(()=>h.remove(),8000);
-    },300);
+
 }
     function startHearts(){
     setInterval(()=>{
